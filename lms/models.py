@@ -6,6 +6,19 @@ class PlanEstudios(models.Model):
     descripcion = models.TextField()
     activo = models.BooleanField(default=True)
 
+    @classmethod
+    def create_plan(cls,idplan,nombre,descripcion,activo):
+        plan = cls(idplan=idplan,nombre=nombre,descripcion=descripcion,activo=activo)
+        return plan
+    def update_plan(self,idplan,nombre,descripcion,activo):
+        self.idplan = idplan
+        self.nombre = nombre
+        self.descripcion = descripcion
+        self.activo = activo
+        return self
+    def select_plan(self):
+        return self
+
     class Meta:
         verbose_name = 'planestudios'
         
@@ -26,38 +39,33 @@ class Cursos(models.Model):
     def __str__(self):
         return self.nombre
 
+class ponderaciones(models.Model):
+    idponderacion = models.AutoField(primary_key=True,null=False)
+    idplan = models.ForeignKey(PlanEstudios, on_delete=models.CASCADE)
+    idcurso = models.ForeignKey(Cursos, on_delete=models.CASCADE)
+    ponderacion = models.IntegerField(null=False)
+    activo = models.BooleanField(default=True,null=False)
 
-class BancoPreguntas(models.Model):
-    idpregunta = models.AutoField(primary_key=True,null=False)
+    class Meta:
+        verbose_name = 'ponderaciones'
+        unique_together = ('idponderacion', 'idplan', 'idcurso')
+
+    def __str__(self):
+        return self.ponderacion
+
+class Notas(models.Model):
+    idnota = models.AutoField(primary_key=True,null=False)
     idcurso = models.ForeignKey(Cursos, on_delete=models.CASCADE)
     idplan = models.ForeignKey(PlanEstudios, on_delete=models.CASCADE)
-    pregunta = models.CharField(max_length=200,null=False)
+    nota = models.IntegerField(null=False)
     activo = models.BooleanField(default=True,null=False)
 
     class Meta:
-        verbose_name = 'bancopreguntas'
+        verbose_name = 'notas'
+        unique_together = ('idnota', 'idplan', 'idcurso')
+
     def __str__(self):
-        return self.pregunta
+        return self.nota
 
-class BancoRespuestas(models.Model):
-    idrespuesta = models.AutoField(primary_key=True,null=False)
-    idpregunta = models.ForeignKey(BancoPreguntas, on_delete=models.CASCADE)
-    respuesta = models.CharField(max_length=200,null=False)
-    activo = models.BooleanField(default=True,null=False)
 
-    class Meta:
-        verbose_name = 'bancorespuestas'
-    def __str__(self):
-        return self.respuesta
 
-    
-class BancoResultados(models.Model):
-    idresultado = models.AutoField(primary_key=True,null=False)
-    idpregunta = models.ForeignKey(BancoPreguntas, on_delete=models.CASCADE)
-    idrespuesta = models.ForeignKey(BancoRespuestas, on_delete=models.CASCADE)
-    resultado = models.CharField(max_length=200,null=False)
-    activo = models.BooleanField(default=True,null=False)
-
-    
-    def __str__(self):
-        return self.resultado
