@@ -55,4 +55,11 @@ class Notas(models.Model):
         return self.nota
 
 
+class MisCursos(models.Model):
+    idmiscurso = models.AutoField(primary_key=True,null=False)
+    idplan = models.ForeignKey(PlanEstudios, on_delete=models.CASCADE)
+    idcurso = models.ForeignKey(Cursos, on_delete=models.CASCADE)
+    
+    activo = models.BooleanField(default=True,null=False)
+
 
