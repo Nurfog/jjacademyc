@@ -6,19 +6,6 @@ class PlanEstudios(models.Model):
     descripcion = models.TextField()
     activo = models.BooleanField(default=True)
 
-    @classmethod
-    def create_plan(cls,idplan,nombre,descripcion,activo):
-        plan = cls(idplan=idplan,nombre=nombre,descripcion=descripcion,activo=activo)
-        return plan
-    def update_plan(self,idplan,nombre,descripcion,activo):
-        self.idplan = idplan
-        self.nombre = nombre
-        self.descripcion = descripcion
-        self.activo = activo
-        return self
-    def select_plan(self):
-        return self
-
     class Meta:
         verbose_name = 'planestudios'
         
