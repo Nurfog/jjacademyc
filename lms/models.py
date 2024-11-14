@@ -20,7 +20,7 @@ class Cursos(models.Model):
     idcurso = models.AutoField(primary_key=True,null=False)
     idplan = models.ForeignKey(PlanEstudios, on_delete=models.CASCADE)
     nombre = models.CharField(max_length=200,null=False)
-    descripcion = models.TextField()
+    descripcion = models.TextField()    
     activo = models.BooleanField(default=True)
 
     class Meta:
@@ -32,21 +32,20 @@ class Cursos(models.Model):
 class ponderaciones(models.Model):
     idponderacion = models.AutoField(primary_key=True,null=False)
     idplan = models.ForeignKey(PlanEstudios, on_delete=models.CASCADE)
-    idcurso = models.ForeignKey(Cursos, on_delete=models.CASCADE)
     ponderacion = models.IntegerField(null=False)
     activo = models.BooleanField(default=True,null=False)
 
     class Meta:
         verbose_name = 'ponderaciones'
-        unique_together = ('idponderacion', 'idplan', 'idcurso')
+        unique_together = ('idponderacion', 'idplan')
 
     def __str__(self):
         return self.ponderacion
 
 class Notas(models.Model):
     idnota = models.AutoField(primary_key=True,null=False)
-    idcurso = models.ForeignKey(Cursos, on_delete=models.CASCADE)
     idplan = models.ForeignKey(PlanEstudios, on_delete=models.CASCADE)
+    idcurso = models.ForeignKey(Cursos, on_delete=models.CASCADE)
     nota = models.IntegerField(null=False)
     activo = models.BooleanField(default=True,null=False)
 
@@ -78,6 +77,7 @@ class Cursosabiertos(models.Model):
     admisioninicio = models.DateTimeField(null=True)
     admisionfin = models.DateTimeField(null=True)
     idasignacion = models.ForeignKey(Profesores, on_delete=models.CASCADE,null=True)
+    imgcurso = models.ImageField(null=True)
     activo = models.BooleanField(default=True,null=False)
 
 class AsignacionProfesores(models.Model):
@@ -90,8 +90,6 @@ class AsignacionProfesores(models.Model):
 class MisCursos(models.Model):
     idmiscurso = models.AutoField(primary_key=True,null=False)
     idcursoabierto = models.ForeignKey(Cursosabiertos, on_delete=models.CASCADE, null=True)
-    username = models.ForeignKey(User, on_delete=models.CASCADE, null=True)    
+    username = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
     activo = models.BooleanField(default=True,null=False)
-
-
 

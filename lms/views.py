@@ -10,3 +10,11 @@ def dashboard(request):
 
 def compras(request):
     return render(request, 'pages/compras.html')
+
+def logout(request):
+    return render(request, 'pages/logout.html')
+
+def profile(request):
+    return render(request, 'pages/profile.html')
+
+
