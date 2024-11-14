@@ -4,6 +4,8 @@ from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from .models import *
+from django.http import JsonResponse
+from django.middleware.csrf import get_token
 
 
 def index(request):
@@ -30,7 +32,8 @@ def testimonial(request):
 def error_404(request):
     return render(request, 'pages/404.html', status=404)
 
-
+def csrf(request):
+    return JsonResponse({'csrfToken': get_token(request)})
 
 def login_page(request):
     # Check if the HTTP request method is POST (form submission)

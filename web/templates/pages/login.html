@@ -7,12 +7,14 @@
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
+    
     <div class="container mt-5">
         <!-- Login form -->
         <form class="col-6 mx-auto card p-3 shadow-lg" method="post" enctype="multipart/form-data">
             <h1 style="text-align: center;"><span style="color: green;">RB Academy</span></h1>
 
-            {% csrf_token %}  <!-- CSRF token for security -->
+              <!-- CSRF token for security -->
+            {% csrf_token %}
 
             <!-- Login heading -->
             <h3>Login</h3>
