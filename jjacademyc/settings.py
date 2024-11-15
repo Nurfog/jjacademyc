@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'autenticacion',
     'web',
     'lms',
     'jjacademyc',
@@ -63,7 +64,9 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [BASE_DIR / 'web' / 'templates',
-                 BASE_DIR / 'lms' / 'templates'],
+                 BASE_DIR / 'lms' / 'templates',
+                 BASE_DIR / 'diagnostico' / 'templates',
+                 BASE_DIR / 'autenticacion' / 'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -77,6 +80,8 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'jjacademyc.wsgi.application'
+
+LOGIN_REDIRECT_URL = "/lms/dashboard/"
 
 
 # Database

@@ -1,9 +1,8 @@
 from django.contrib import admin
-from django.urls import path
-from django.contrib.auth.views import LoginView
+from django.urls import path,include
 from . import views
-from jjacademyc import settings
-from django.conf.urls.static import static
+from autenticacion.views import login_page, register_page
+
 
 urlpatterns = [
     
@@ -14,8 +13,10 @@ urlpatterns = [
     path('team/', views.team, name='team'),
     path('testimonial/', views.testimonial, name='testimonial'),
     path('error_404/', views.error_404, name='error_404'),
-    path('login/',views.login_page,name='login'),
-    path('register/',views.register_page,name='register'),
+    path('account/', login_page, name='account'),
+    #path('login/',views.login_page,name='login'),
+    #path('register/',views.register_page,name='register'),
+    
     
 ]
 

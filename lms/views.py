@@ -12,7 +12,7 @@ def compras(request):
     return render(request, 'pages/compras.html')
 
 def logout(request):
-    return render(request, 'pages/logout.html')
+    return render(request, 'account/logout.html')
 
 def profile(request):
     return render(request, 'pages/profile.html')

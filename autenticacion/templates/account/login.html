@@ -1,17 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-</head>
-<body>
-    
+{% extends 'base.html' %}
+
+{% block title %}Login{% endblock %}
+
+{% block content %}
+   
     <div class="container mt-5">
         <!-- Login form -->
         <form class="col-6 mx-auto card p-3 shadow-lg" method="post" enctype="multipart/form-data">
-            <h1 style="text-align: center;"><span style="color: green;">RB Academy</span></h1>
+            <h1 class="text-primary" style="text-align: center;"><span >asdf</span></h1>
 
               <!-- CSRF token for security -->
             {% csrf_token %}
@@ -49,5 +45,5 @@
             <button type="submit" class="btn btn-primary">Submit</button>
         </form>
     </div>
-</body>
-</html>
+
+{% endblock %}

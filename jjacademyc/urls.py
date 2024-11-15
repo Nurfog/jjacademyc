@@ -23,4 +23,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('web.urls')),
     path('', include('lms.urls')),
+    path('', include('autenticacion.urls')),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
