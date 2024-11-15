@@ -5,7 +5,7 @@ from django.contrib import messages
 
 # Create your views here.
 
-def dashboard(request):
+def dashboard(request):      
     return render(request, 'pages/dashboard.html')
 
 def compras(request):
