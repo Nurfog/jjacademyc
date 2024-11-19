@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'autenticacion',
+    'cms',
     'web',
     'lms',
     'jjacademyc',
@@ -66,7 +67,9 @@ TEMPLATES = [
         'DIRS': [BASE_DIR / 'web' / 'templates',
                  BASE_DIR / 'lms' / 'templates',
                  BASE_DIR / 'diagnostico' / 'templates',
-                 BASE_DIR / 'autenticacion' / 'templates'],
+                 BASE_DIR / 'autenticacion' / 'templates',
+                 BASE_DIR / 'jjacademyc' / 'templates',
+                 BASE_DIR / 'cms' / 'templates',],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -139,7 +142,8 @@ STATIC_ROOT = BASE_DIR / "static/"
 STATICFILES_DIRS = [BASE_DIR / "web" / "assets",
                     BASE_DIR / "lms" / "assets",
                     BASE_DIR / "jjacademyc" / "assets",
-                    BASE_DIR / "diagnostico" / "assets",]
+                    BASE_DIR / "diagnostico" / "assets",
+                    BASE_DIR / "cms" / "assets",]
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field

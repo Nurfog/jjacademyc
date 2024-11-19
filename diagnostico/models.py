@@ -1,5 +1,6 @@
 from django.db import models
 from lms.models import *
+from cms.models import *
 
 # Create your models here.
 

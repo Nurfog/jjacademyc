@@ -1,19 +1,15 @@
 from django.contrib import admin
-from django.contrib import admin
 from .models import *
+from cms.models import *
 # Register your models here.
 
 
+class MiscursosAdmin(admin.ModelAdmin):
+    list_display = ('idmiscurso', 'idcursoabierto', 'username', 'activo')
 
-# Register your models here.
+admin.site.register(MisCursos, MiscursosAdmin)
 
-class PlanEstudiosAdmin(admin.ModelAdmin):
-    nombre = ('nombre', 'descripcion', 'activo')
+class NotasAdmin(admin.ModelAdmin):
+    list_display = ('idnota', 'idplan', 'idcurso', 'idusuario', 'nota', 'activo')
 
-admin.site.register(PlanEstudios, PlanEstudiosAdmin)
-
-class CursosAdmin(admin.ModelAdmin):
-    nombre = ('idcurso', 'idplan', 'nombre', 'descripcion', 'activo')
-
-admin.site.register(Cursos, CursosAdmin)
-
+admin.site.register(Notas, NotasAdmin)
