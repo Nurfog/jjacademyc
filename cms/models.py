@@ -61,7 +61,7 @@ class Profesores(models.Model):
         verbose_name = 'profesores'
 
     def __str__(self):
-        return self.nombres + ' ' + self.ap_paterno + ' ' + self.ap_materno
+        return str(self.nombres + ' ' + self.ap_paterno + ' ' + self.ap_materno)
 
 
 class Cursosabiertos(models.Model):
@@ -80,7 +80,7 @@ class Cursosabiertos(models.Model):
         unique_together = ('idcursoabierto', 'idplan', 'idcurso')
 
     def __str__(self):
-        return Cursos.objects.get(nombre = self.idcurso).nombre + ' ' + str(self.idcursoabierto)
+        return Cursos.objects.get(nombre = self.idcurso).nombre + '-' + str(self.idcursoabierto)
 
 
 
@@ -98,13 +98,13 @@ class Tipoasignacionprofesor(models.Model):
 class AsignacionProfesores(models.Model):
     idasignacion = models.AutoField(primary_key=True,null=False)
     idprofesor = models.ForeignKey(Profesores, on_delete=models.CASCADE,null=True)
-    idcursoaberto = models.ForeignKey(Cursosabiertos, on_delete=models.CASCADE,null=True)
+    idcursoabierto = models.ForeignKey(Cursosabiertos, on_delete=models.CASCADE,null=True)
     idtipoasignacion = models.ForeignKey(Tipoasignacionprofesor, on_delete=models.CASCADE,null=True)
     activo = models.BooleanField(default=True,null=False)
 
     class Meta:
         verbose_name = 'asignacionprofesores'
-        unique_together = ('idasignacion', 'idprofesor', 'idcursoaberto')
+        unique_together = ('idasignacion', 'idprofesor', 'idcursoabierto')
 
     def __str__(self):
-        return self.idprofesor
+        return str(self.idprofesor) + '-' + str(self.idcursoabierto) + '-' + str(self.idtipoasignacion)
