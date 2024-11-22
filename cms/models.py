@@ -15,13 +15,25 @@ class PlanEstudios(models.Model):
         
     def __str__(self):
         return self.nombre
+    
+    def save(self, *args, **kwargs):        
+        super(PlanEstudios, self).save(*args, **kwargs)
+    
+    def delete(self, *args, **kwargs):
+        super(PlanEstudios, self).delete(*args, **kwargs)
+
+    def update(self, *args, **kwargs):
+        super(PlanEstudios, self).update(*args, **kwargs)
+
+    def listar(self):
+        return PlanEstudios.objects.all()
 
 
 class Cursos(models.Model):
     idcurso = models.AutoField(primary_key=True,null=False)
     idplan = models.ForeignKey(PlanEstudios, on_delete=models.CASCADE)
     nombre = models.CharField(max_length=200,null=False)
-    descripcion = models.TextField()    
+    descripcion = models.TextField()
     activo = models.BooleanField(default=True)
 
     class Meta:
@@ -29,10 +41,48 @@ class Cursos(models.Model):
         unique_together = ('idcurso', 'idplan')
     def __str__(self):
         return self.nombre
+    
+    def save(self, *args, **kwargs):        
+        super(Cursos, self).save(*args, **kwargs)
+    
+    def delete(self, *args, **kwargs):
+        super(Cursos, self).delete(*args, **kwargs)
+
+    def update(self, *args, **kwargs):
+        super(Cursos, self).update(*args, **kwargs)
+
+    def listar(self):
+        return Cursos.objects.all()
+
+
+class tipoponderacion(models.Model):
+    idtipoponderacion = models.AutoField(primary_key=True,null=False)
+    nombre = models.CharField(max_length=200,null=False)
+    activo = models.BooleanField(default=True,null=False)
+
+    class Meta:
+        verbose_name = 'tipoponderacion'
+
+    def __str__(self):
+        return self.nombre
+    
+    def save(self, *args, **kwargs):        
+        super(tipoponderacion, self).save(*args, **kwargs)
+    
+    def delete(self, *args, **kwargs):
+        super(tipoponderacion, self).delete(*args, **kwargs)
+
+    def update(self, *args, **kwargs):
+        super(tipoponderacion, self).update(*args, **kwargs)
+
+    def listar(self):
+        return tipoponderacion.objects.all()
+
 
 class ponderaciones(models.Model):
     idponderacion = models.AutoField(primary_key=True,null=False)
     idplan = models.ForeignKey(PlanEstudios, on_delete=models.CASCADE)
+    idtipoponderacion = models.ForeignKey(tipoponderacion, on_delete=models.CASCADE,null=True)
     ponderacion = models.IntegerField(null=False)
     activo = models.BooleanField(default=True,null=False)
 
@@ -43,7 +93,17 @@ class ponderaciones(models.Model):
     def __str__(self):
         return self.ponderacion
 
+    def save(self, *args, **kwargs):        
+        super(ponderaciones, self).save(*args, **kwargs)
+    
+    def delete(self, *args, **kwargs):
+        super(ponderaciones, self).delete(*args, **kwargs)
 
+    def update(self, *args, **kwargs):
+        super(ponderaciones, self).update(*args, **kwargs)
+
+    def listar(self):
+        return ponderaciones.objects.all()
 
 
 class Profesores(models.Model):
@@ -63,6 +123,18 @@ class Profesores(models.Model):
     def __str__(self):
         return str(self.nombres + ' ' + self.ap_paterno + ' ' + self.ap_materno)
 
+    def save(self, *args, **kwargs):        
+        super(Profesores, self).save(*args, **kwargs)
+    
+    def delete(self, *args, **kwargs):
+        super(Profesores, self).delete(*args, **kwargs)
+
+    def update(self, *args, **kwargs):
+        super(Profesores, self).update(*args, **kwargs)
+
+    def listar(self):
+        return Profesores.objects.all()
+
 
 class Cursosabiertos(models.Model):
     idcursoabierto = models.AutoField(primary_key=True,null=False)
@@ -72,6 +144,9 @@ class Cursosabiertos(models.Model):
     fechafin = models.DateTimeField(null=True)
     admisioninicio = models.DateTimeField(null=True)
     admisionfin = models.DateTimeField(null=True)
+    cupos = models.IntegerField(default=15,null=False)
+    horassincronicas = models.IntegerField(default=15, null=False)
+    horasasincronicas = models.IntegerField(default=15,null=False)
     imgcurso = models.ImageField(null=True)
     activo = models.BooleanField(default=True,null=False)
 
@@ -82,6 +157,17 @@ class Cursosabiertos(models.Model):
     def __str__(self):
         return Cursos.objects.get(nombre = self.idcurso).nombre + '-' + str(self.idcursoabierto)
 
+    def save(self, *args, **kwargs):        
+        super(Cursosabiertos, self).save(*args, **kwargs)
+    
+    def delete(self, *args, **kwargs):
+        super(Cursosabiertos, self).delete(*args, **kwargs)
+
+    def update(self, *args, **kwargs):
+        super(Cursosabiertos, self).update(*args, **kwargs)
+
+    def listar(self):
+        return Cursosabiertos.objects.all()
 
 
 class Tipoasignacionprofesor(models.Model):
@@ -94,6 +180,18 @@ class Tipoasignacionprofesor(models.Model):
 
     def __str__(self):
         return self.nombre
+
+    def save(self, *args, **kwargs):        
+        super(Tipoasignacionprofesor, self).save(*args, **kwargs)
+    
+    def delete(self, *args, **kwargs):
+        super(Tipoasignacionprofesor, self).delete(*args, **kwargs)
+
+    def update(self, *args, **kwargs):
+        super(Tipoasignacionprofesor, self).update(*args, **kwargs)
+
+    def listar(self):
+        return Tipoasignacionprofesor.objects.all()
 
 class AsignacionProfesores(models.Model):
     idasignacion = models.AutoField(primary_key=True,null=False)
@@ -108,3 +206,15 @@ class AsignacionProfesores(models.Model):
 
     def __str__(self):
         return str(self.idprofesor) + '-' + str(self.idcursoabierto) + '-' + str(self.idtipoasignacion)
+
+    def save(self, *args, **kwargs):        
+        super(AsignacionProfesores, self).save(*args, **kwargs)
+    
+    def delete(self, *args, **kwargs):
+        super(AsignacionProfesores, self).delete(*args, **kwargs)
+
+    def update(self, *args, **kwargs):
+        super(AsignacionProfesores, self).update(*args, **kwargs)
+
+    def listar(self):
+        return AsignacionProfesores.objects.all()
