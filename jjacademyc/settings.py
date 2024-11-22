@@ -145,6 +145,9 @@ STATICFILES_DIRS = [BASE_DIR / "web" / "assets",
                     BASE_DIR / "diagnostico" / "assets",
                     BASE_DIR / "cms" / "assets",]
 
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR / "cms/"
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
