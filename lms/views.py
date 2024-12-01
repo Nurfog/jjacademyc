@@ -6,11 +6,20 @@ from lms.models import *
 
 # Create your views here.
 
-def dashboard(request):     
+def dashboard(request):
     return render(request, 'pages/dashboard.html')
 
 def compras(request):
-    cursos = Cursosabiertos.objects.all()
+    if request.method == 'POST':
+        cursos = Cursosabiertos.objects.filter(idcursoabierto = request.POST['idcursoabierto'])
+
+        for curso in cursos:
+            miscursos=MisCursos.objects.create(idcursoabierto = curso, username = request.username, activo = True)
+            
+
+
+        return render(request, 'pages/compras.html')
+
     return render(request, 'pages/compras.html')
 
 def logout(request):
