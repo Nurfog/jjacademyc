@@ -16,7 +16,7 @@ class MisCursos(models.Model):
         verbose_name = 'miscursos'
     
     def __str__(self):
-        return self.idmiscurso
+        return str(self.idmiscurso)
 
 class Notas(models.Model):
     idnota = models.AutoField(primary_key=True,null=False)
@@ -31,5 +31,5 @@ class Notas(models.Model):
         unique_together = ('idnota', 'idplan', 'idcurso')
 
     def __str__(self):
-        return self.nota
+        return self
 
