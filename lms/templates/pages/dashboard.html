@@ -9,5 +9,19 @@
 
 <h2>Tus cursos</h2>
 
+{% for result in cursos %}
+
+    <div class="card" style="width: 18rem;">
+        <div class="card-body">
+            <h5 class="card-title">{{result.Curso}}</h5>
+            <p class="card-text">{{result.fecha_inicio}}</p>
+            <p class="card-text">{{result.fecha_final}}</p>         
+            <a href="#" class="btn btn-primary">Ver curso</a>                           
+        </div>
+    </div>
+
+{{result}}
+
+{% endfor %}
 
 {% endblock %}
