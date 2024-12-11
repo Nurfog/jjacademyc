@@ -26,8 +26,6 @@ def dashboard(request):
     #return render(request, 'pages/dashboard.html')
 
 def compras(request):
-    
-def compras(request):
     return render(request, 'pages/compras.html')
    
 
