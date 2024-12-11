@@ -5,26 +5,28 @@
 {% block content %}
 
 
+
 <h1>Hola {{ user.first_name }} {{ user.last_name }}</h1>
 
 <h2>Tus cursos</h2>
 
 {% for result in cursos %}
 
-    <div class="card" style="width: 18rem;">
+    <div class="card" style="width: 30rem;">
         <div class="card-body">
-            <h5 class="card-title">{{result.Curso}}</h5>
-            <p class="card-text">{{result.fecha_inicio}}</p>
-            <p class="card-text">{{result.fecha_final}}</p>         
+            <h5 class="card-title">{{result.0}}</h5>
+            <p><h5>Inicio de clases:</h5></p>
+            <p class="card-text"> {{result.1}}</p>
+            <p><h5>Fin de clases:</h5></p>
+            <p class="card-text">{{result.2}}</p>
+            <p><h5>otro dato:</h5></p>
+            <p class="card-text"><img src= "http://127.0.0.1:8000/media/{{result.3}}" style="width: 80px; height: 80px;"></p>
             <a href="#" class="btn btn-primary">Ver curso</a>                           
         </div>
     </div>
 
-{{result}}
+
 
 {% endfor %}
-
-    {{ cursoss.0.1 }}
-
 
 {% endblock %}

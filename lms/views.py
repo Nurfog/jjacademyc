@@ -12,14 +12,14 @@ from lms.classes.spMiscursos import *
 def dashboard(request):
     try:         
         cursor = connection.cursor()
-        cursor.execute("call ListarCursos")   
-        cursos = cursor.fetchall()
+        cursor.execute("call ListarMisCursos(%s)", [request.user.username])   
+        result = cursor.fetchall()
         i=0
-        cursoss = [0]*len(cursos)
-        for i in range(0, len(cursos)):
-            cursoss[i]=cursos[i]
+        cursos = [0]*len(result)
+        for i in range(0, len(result)):
+            cursos[i]=result[i]
             i=i+1
-        return render(request, 'pages/dashboard.html', {'cursoss': cursoss})
+        return render(request, 'pages/dashboard.html', {'cursos': cursos})
     finally:
         cursor.close()
 
