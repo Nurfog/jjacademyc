@@ -9,7 +9,20 @@ from django.contrib.auth.models import User
 # Create your views here.
 
 def dashboard(request):
-    return render(request, 'pages/dashboard.html')
+    try:         
+        cursor = connection.cursor()
+        cursor.execute("call ListarCursos")   
+        cursos = cursor.fetchall()
+        i=0
+        cursoss = [0]*len(cursos)
+        for i in range(0, len(cursos)):
+            cursoss[i]=cursos[i]
+            i=i+1
+        return render(request, 'pages/dashboard.html', {'cursoss': cursoss})
+    finally:
+        cursor.close()
+
+    #return render(request, 'pages/dashboard.html')
 
 def compras(request):
     
