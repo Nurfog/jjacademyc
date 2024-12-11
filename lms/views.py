@@ -4,6 +4,7 @@ from django.contrib import messages
 from lms.models import *
 from django.db import connection
 from django.contrib.auth.models import User
+from lms.classes.spMiscursos import *
 
 
 # Create your views here.
@@ -26,7 +27,9 @@ def dashboard(request):
 
 def compras(request):
     
-    return render(request, 'pages/compras.html',)
+def compras(request):
+    return render(request, 'pages/compras.html')
+   
 
 def logout(request):
     return render(request, 'pages/login.html')
