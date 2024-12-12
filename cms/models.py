@@ -148,6 +148,7 @@ class Cursosabiertos(models.Model):
     horassincronicas = models.IntegerField(default=15, null=False)
     horasasincronicas = models.IntegerField(default=15,null=False)
     imgcurso = models.ImageField(null=True)
+    aprueba = models.IntegerField(default=70,null=False)
     activo = models.BooleanField(default=True,null=False)
 
     class Meta:

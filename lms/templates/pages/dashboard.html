@@ -19,11 +19,11 @@
             <div class="col-md-8">
                 <div class="card-body">
                     <h3 class="card-title">{{ result.0 }}</h3>
-                    <p class="card-text">{{ result.descripcion }}</p>
-                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                    <p class="card-text"><small class="text-muted">Inicio de clases : {{ result.1 }}</small></p>
+                    <p class="card-text"><small class="text-muted">Fin de clases : {{ result.2 }}</small></p>
                 </div>
                 <div class="card-footer">
-                    <small class="text-muted">Inicio de clases : {{ result.1 }}</small><br><small class="text-muted">Fin de clases : {{ result.2 }}</small>
+                    <small class="text-muted" style="color: grey;">Nota de aprobación: {{ result.4 }}</small>
                 </div>
             </div>
         </div>
