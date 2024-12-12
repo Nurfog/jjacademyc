@@ -11,22 +11,23 @@
 <h2>Tus cursos</h2>
 
 {% for result in cursos %}
-
-    <div class="card" style="width: 30rem;">
-        <div class="card-body">
-            <h5 class="card-title">{{result.0}}</h5>
-            <p><h5>Inicio de clases:</h5></p>
-            <p class="card-text"> {{result.1}}</p>
-            <p><h5>Fin de clases:</h5></p>
-            <p class="card-text">{{result.2}}</p>
-            <p><h5>otro dato:</h5></p>
-            <p class="card-text"><img src= "http://127.0.0.1:8000/media/{{result.3}}" style="width: 80px; height: 80px;"></p>
-            <a href="#" class="btn btn-primary">Ver curso</a>                           
+    <div class="card mb-3" style="max-width: 720px;">
+        <div class="row g-0">
+            <div class="col-md-4 text-center">
+                <img src="{{ result.3 }}" class="img-fluid" alt="...">
+            </div>
+            <div class="col-md-8">
+                <div class="card-body">
+                    <h3 class="card-title">{{ result.0 }}</h3>
+                    <p class="card-text">{{ result.descripcion }}</p>
+                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                </div>
+                <div class="card-footer">
+                    <small class="text-muted">Inicio de clases : {{ result.1 }}</small><br><small class="text-muted">Fin de clases : {{ result.2 }}</small>
+                </div>
+            </div>
         </div>
     </div>
-
-
-
 {% endfor %}
 
 {% endblock %}

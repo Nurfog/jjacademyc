@@ -36,3 +36,5 @@ def profile(request):
     return render(request, 'pages/profile.html')
 
 
+
+

@@ -218,3 +218,31 @@ class AsignacionProfesores(models.Model):
 
     def listar(self):
         return AsignacionProfesores.objects.all()
+    
+class CalendarioDetalles(models.Model):
+    idcalendariodetalle = models.AutoField(primary_key=True,null=False)
+    idcursoabierto = models.ForeignKey(Cursosabiertos, on_delete=models.CASCADE,null=True)
+    fecha = models.DateField(null=True)
+    hora = models.TimeField(null=True)
+    duracion = models.TimeField(null=True)
+    activo = models.BooleanField(default=True,null=False)
+
+    class Meta:
+        verbose_name = 'calendariodetalles'
+        unique_together = ('idcalendariodetalle', 'idcursoabierto')
+
+    def __str__(self):
+        return str(self.idcursoabierto) + '-' + str(self.idcalendariodetalle)
+
+    def save(self, *args, **kwargs):        
+        super(CalendarioDetalles, self).save(*args, **kwargs)
+    
+    def delete(self, *args, **kwargs):        
+        super(CalendarioDetalles, self).delete(*args, **kwargs)
+
+    def update(self, *args, **kwargs):
+        super(CalendarioDetalles, self).update(*args, **kwargs)
+
+    def listar(self):        
+        return CalendarioDetalles.objects.all()
+    
