@@ -12,7 +12,7 @@ from lms.classes.spMiscursos import *
 def dashboard(request):
     try:         
         cursor = connection.cursor()
-        cursor.execute("call ListarCursos(%s)", [request.user.username])   
+        cursor.execute("call ListarMisCursos(%s)", [request.user.username])   
         result = cursor.fetchall()
         i=0
         cursos = [0]*len(result)
