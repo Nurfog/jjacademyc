@@ -85,6 +85,7 @@ TEMPLATES = [
 WSGI_APPLICATION = 'jjacademyc.wsgi.application'
 
 LOGIN_REDIRECT_URL = "/lms/dashboard/"
+LOGOUT_REDIRECT_URL = "http://localhost:8000/"
 
 
 # Database

@@ -6,6 +6,25 @@
 
 <h1>Cursos disponibles</h1>
 
+{% for result in cursos %}
+    <div class="card mb-3" style="max-width: 720px;">
+        <div class="row g-0">
+            <div class="col-md-4 text-center">
+                <img src="{{ result.3 }}" class="img-fluid" alt="...">
+            </div>
+            <div class="col-md-8">
+                <div class="card-body">
+                    <h3 class="card-title">{{ result.0 }}</h3>
+                    <p class="card-text"><small class="text-muted">Inicio de clases : {{ result.1 }}</small></p>
+                    <p class="card-text"><small class="text-muted">Fin de clases : {{ result.2 }}</small></p>
+                </div>
+                <div class="card-footer">
+                    <small class="text-muted" style="color: grey;">Nota de aprobación: {{ result.4 }}</small>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endfor %}
 
 
 

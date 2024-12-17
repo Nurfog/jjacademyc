@@ -4,10 +4,10 @@ from cms.models import *
 
 # Create your models here.
 
-class BancoPreguntas(models.Model):
+class BancoPregunta(models.Model):
     idpregunta = models.AutoField(primary_key=True,null=False)
-    idcurso = models.ForeignKey(Cursos, on_delete=models.CASCADE)
-    idplan = models.ForeignKey(PlanEstudios, on_delete=models.CASCADE)
+    idcurso = models.ForeignKey(Curso, on_delete=models.CASCADE)
+    idplan = models.ForeignKey(PlanEstudio, on_delete=models.CASCADE)
     pregunta = models.CharField(max_length=200,null=False)
     activo = models.BooleanField(default=True,null=False)
 
@@ -16,9 +16,9 @@ class BancoPreguntas(models.Model):
     def __str__(self):
         return self.pregunta
 
-class BancoRespuestas(models.Model):
+class BancoRespuesta(models.Model):
     idrespuesta = models.AutoField(primary_key=True,null=False)
-    idpregunta = models.ForeignKey(BancoPreguntas, on_delete=models.CASCADE)
+    idpregunta = models.ForeignKey(BancoPregunta, on_delete=models.CASCADE)
     respuesta = models.CharField(max_length=200,null=False)
     activo = models.BooleanField(default=True,null=False)
 
@@ -28,10 +28,10 @@ class BancoRespuestas(models.Model):
         return self.respuesta
 
     
-class BancoResultados(models.Model):
+class BancoResultado(models.Model):
     idresultado = models.AutoField(primary_key=True,null=False)
-    idpregunta = models.ForeignKey(BancoPreguntas, on_delete=models.CASCADE)
-    idrespuesta = models.ForeignKey(BancoRespuestas, on_delete=models.CASCADE)
+    idpregunta = models.ForeignKey(BancoPregunta, on_delete=models.CASCADE)
+    idrespuesta = models.ForeignKey(BancoRespuesta, on_delete=models.CASCADE)
     resultado = models.CharField(max_length=200,null=False)
     activo = models.BooleanField(default=True,null=False)
 

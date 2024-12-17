@@ -10,10 +10,10 @@ from lms.classes.spMiscursos import *
 # Create your views here.
 
 def dashboard(request):
-    try:         
+    try:        
         cursor = connection.cursor()
         cursor.execute("call ListarMisCursos(%s)", [request.user.username])   
-        result = cursor.fetchall()
+        result = cursor.fetchall()        
         i=0
         cursos = [0]*len(result)
         for i in range(0, len(result)):
@@ -26,10 +26,22 @@ def dashboard(request):
     #return render(request, 'pages/dashboard.html')
 
 def compras(request):
-    return render(request, 'pages/compras.html')
+    try:         
+        cursor = connection.cursor()
+        cursor.execute("call VentaCursos")   
+        result = cursor.fetchall()
+        i=0
+        cursos = [0]*len(result)
+        for i in range(0, len(result)):
+            cursos[i]=result[i]
+            i=i+1
+        return render(request, 'pages/compras.html', {'cursos': cursos})
+    finally:
+        cursor.close()
+    
    
 
-def logout(request):
+def logout_page(request):
     return render(request, 'pages/login.html')
 
 def profile(request):

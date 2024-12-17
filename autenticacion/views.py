@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.views import LoginView
 from django.contrib.auth.models import User
 from django.contrib import messages
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 
 
 # Create your views here.
@@ -68,5 +68,6 @@ def register_page(request):
     # Render the registration page template (GET request)
     return render(request, 'account/register.html')
 
-def logout(request):
+def logout_page(request):
+    logout(request)
     return render(request, 'account/logout.html')

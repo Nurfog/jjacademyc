@@ -6,9 +6,9 @@ from cms.models import *
 
 
 
-class MisCursos(models.Model):
+class MisCurso(models.Model):
     idmiscurso = models.AutoField(primary_key=True,null=False)
-    idcursoabierto = models.ForeignKey(Cursosabiertos, on_delete=models.CASCADE, null=True)
+    idcursoabierto = models.ForeignKey(Cursosabierto, on_delete=models.CASCADE, null=True)
     username = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
     activo = models.BooleanField(default=True,null=False)
 
@@ -18,10 +18,10 @@ class MisCursos(models.Model):
     def __str__(self):
         return str(self.idmiscurso)
 
-class Notas(models.Model):
+class Nota(models.Model):
     idnota = models.AutoField(primary_key=True,null=False)
-    idplan = models.ForeignKey(PlanEstudios, on_delete=models.CASCADE)
-    idcurso = models.ForeignKey(Cursos, on_delete=models.CASCADE)
+    idplan = models.ForeignKey(PlanEstudio, on_delete=models.CASCADE)
+    idcurso = models.ForeignKey(Curso, on_delete=models.CASCADE)
     idusuario = models.ForeignKey(User, on_delete=models.CASCADE)
     nota = models.IntegerField(null=False)
     activo = models.BooleanField(default=True,null=False)
