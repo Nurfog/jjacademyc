@@ -13,25 +13,28 @@
 {% for result in cursos %}
     <div class="card mb-3" style="max-width: 720px;">
         <div class="row g-0">
-            <div class="col-md-4 text-center">
-                <img src="{{ result.3 }}" class="img-fluid" alt="...">
+            <div class="col-md-3 text-fill">
+                <img src="{{ result.3 }}" class="img-fluid card-img-left" alt="...">
             </div>
             <div class="col-md-8">
                 <div class="card-body">
                     <h3 class="card-title">{{ result.0 }}</h3>
                     <p class="card-text"><small class="text-muted">Inicio de clases : {{ result.1 }}</small></p>
                     <p class="card-text"><small class="text-muted">Fin de clases : {{ result.2 }}</small></p>
-                    <div class="row text-end">
+                    <div class="text-end">
                         <a class="btn btn-primary" href="#" role="button">Reanudar</a>
-                    </div>
-                    
+                    </div>                    
                 </div>
-                <div class="card-footer text-start">
-                    <small class="text-muted" style="color: grey;">Nota de aprobación: {{ result.4 }}</small>        
-                </div>
+                
+            </div>
+        </div>
+        <div class="card-banner text-start" style="max-height: 18px;">
+            <div class="fade alert-content mb-0 alert-info show" role="alert">
+                <small class="text-muted" style="color: grey;">Nota requerida para aprobar el curso: {{ result.4 }}</small>        
             </div>
         </div>
     </div>
+    <br><br><br>
 {% endfor %}
 
 {% endblock %}
