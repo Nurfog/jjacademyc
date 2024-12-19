@@ -2,7 +2,7 @@ from django.shortcuts import render
 from lms.models import *
 from django.db import connection
 from lms.classes.spMiscursos import *
-from lms.classes.cookie import *
+from lms.classes.classes import *
 from autenticacion.urls import *
 from django.shortcuts import redirect
 
