@@ -3,38 +3,48 @@
 {% block title %}Dashboard{% endblock %}
 
 {% block content %}
+<div class="container" style="margin: 2%;">
+    <h1>Hola {{ user.first_name }} {{ user.last_name }}</h1>
 
+    <h2>Tus cursos</h2>
 
+</div>
 
-<h1>Hola {{ user.first_name }} {{ user.last_name }}</h1>
-
-<h2>Tus cursos</h2>
-
-{% for result in cursos %}
-    <div class="card mb-3" style="max-width: 720px;">
-        <div class="row g-0">
-            <div class="col-md-3 text-fill">
-                <img src="{{ result.3 }}" class="img-fluid card-img-left" alt="...">
-            </div>
-            <div class="col-md-8">
-                <div class="card-body">
-                    <h3 class="card-title">{{ result.0 }}</h3>
-                    <p class="card-text"><small class="text-muted">Inicio de clases : {{ result.1 }}</small></p>
-                    <p class="card-text"><small class="text-muted">Fin de clases : {{ result.2 }}</small></p>
-                    <div class="text-end">
-                        <a class="btn btn-primary" href="#" role="button">Reanudar</a>
-                    </div>                    
+<div class="container fluid" style="margin: 2%;">
+    <div class="row py-3 ">        
+        <div class="col" id="main" style="background-color: light-grey;">
+            {% for result in cursos %}
+                <div class="card mb-3 border-3" style="border-color: grey;" >
+                    <div class="row g-0">
+                        <div class="col-md-3 text-fill">
+                            <img src="{{ result.3 }}" class="img-fluid card-img-left" alt="...">
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card-body">
+                                <h3 class="card-title">{{ result.0 }}</h3>
+                                <p class="card-text"><small class="text-muted">Inicio de clases : {{ result.1 }}</small></p>
+                                <p class="card-text"><small class="text-muted">Fin de clases : {{ result.2 }}</small></p>
+                                <div class="text-end">
+                                    <a class="btn btn-primary" href="#" role="button">Reanudar</a>
+                                </div>                    
+                            </div>
+                            
+                        </div>
+                    </div>
+                    <div class="card-banner text-start" style="max-height: 18px;">
+                        <div class="fade alert-content mb-0 alert-info show" role="alert">
+                            <small class="text-muted" style="color: grey;">Nota requerida para aprobar el curso: {{ result.4 }}</small>        
+                        </div>
+                    </div>
                 </div>
-                
+                {% endfor %}
             </div>
-        </div>
-        <div class="card-banner text-start" style="max-height: 18px;">
-            <div class="fade alert-content mb-0 alert-info show" role="alert">
-                <small class="text-muted" style="color: grey;">Nota requerida para aprobar el curso: {{ result.4 }}</small>        
-            </div>
-        </div>
+            
     </div>
-    <br><br><br>
-{% endfor %}
+</div>
+                <br><br><br>
 
+           
+
+    </div>
 {% endblock %}
