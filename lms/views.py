@@ -19,6 +19,7 @@ def dashboard(request):
             for i in range(0, len(result)):
                 cursos[i]=result[i]
                 i=i+1
+            favicon = request.build_absolute_uri('/img/favicon.png')
             return render(request, 'pages/dashboard.html', {'cursos': cursos})
         finally:
             cursor.close()

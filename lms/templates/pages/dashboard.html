@@ -1,8 +1,11 @@
 {% extends 'master.html' %}
 
+{% load static %}
+
 {% block title %}Dashboard{% endblock %}
 
 {% block content %}
+
 <div class="container" style="margin: 2%;">
     <h1>Hola {{ user.first_name }} {{ user.last_name }}</h1>
 
@@ -39,12 +42,12 @@
                 </div>
                 {% endfor %}
             </div>
-            
+        </div> 
     </div>
-</div>
+
                 <br><br><br>
 
            
 
-    </div>
+    
 {% endblock %}
