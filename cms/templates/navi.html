@@ -1,0 +1,40 @@
+{% load static %}
+{% load bootstrap5 %}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+{% load bootstrap_icons %}
+
+<!-- Spinner Start -->
+<div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+    <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
+        <span class="sr-only">Cargando...</span>
+    </div>
+</div>
+<!-- Spinner End -->
+
+
+<!-- Navbar Start -->
+<nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+    <div class="container-fluid">	    
+        <div class="collapse navbar-collapse " id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto order-0 ">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="{% url 'cmsdashboard' %}">Cursos</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'cmscursos' %}">Crear Cursos</a>
+                </li>          
+            </ul>
+      </div>
+      <div class="dropdown">
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1"  aria-expanded="false">
+          {{user.username}}
+        </button>
+        <ul class="dropdown-menu dropdown-content" aria-labelledby="dropdownMenuButton1">
+          <li><a class="dropdown-item" href="{% url 'profile' %}">Perfil</a></li>
+          <li><a class="dropdown-item" href="{% url 'logout' %}">Sign out</a></li>          
+        </ul>
+      </div>
+    </div>
+</nav>
+<!-- Navbar End -->
