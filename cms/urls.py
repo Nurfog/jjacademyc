@@ -12,4 +12,5 @@ urlpatterns = [
     path('cms/ponderaciones/', views.ponderaciones, name='cmsponderaciones'),
     path('cms/profesores/', views.profesores, name='cmsprofesores'),
     path('cms/tipoasignaciones/', views.tipoasignaciones, name='cmsasignaciones'),
+    path('cms/compras/', views.compras, name='cmscompras'),
 ]
