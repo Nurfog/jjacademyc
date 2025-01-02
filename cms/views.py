@@ -1,9 +1,23 @@
 from django.shortcuts import render
+from django.db import connection
 
 # Create your views here.
 
 def dashboard(request):
-    return render(request, 'pages/dashboard.html')
+    try:        
+        cursor = connection.cursor()
+        cursor.execute("call ListarCursosCMS()")   
+        result = cursor.fetchall()        
+        i=0
+        cursos = [0]*len(result)
+        for i in range(0, len(result)):
+            cursos[i]=result[i]
+            i=i+1
+        favicon = request.build_absolute_uri('/img/favicon.png')
+        return render(request, 'pages/dashboardcms.html', {'cursos': cursos})
+    finally:
+            cursor.close()
+    
 
 
 def cursos(request):
