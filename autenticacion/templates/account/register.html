@@ -4,16 +4,17 @@
 
 {% block content %}
     <div class="container mt-5">
-        <!-- Registration form -->
+        <!-- Formulario de registro -->
         <form class="col-6 mx-auto card p-3 shadow-lg" method="post" enctype="multipart/form-data">
-            {% csrf_token %}  <!-- CSRF token for security -->
+            <!-- CSRF token para seguridad -->
+            {% csrf_token %}
 
-            <!-- Registration form heading -->
-            <h1 style="text-align: center;"><span style="color: green;">asdf</span></h1>
-            <h3>Register</h3>
+            <!-- Cabecera de registro -->
+            <h1 style="text-align: center;"><span style="color: green;">Master Language</span></h1>
+            <h3>Registro</h3>
             <hr>
 
-            <!-- Display error/success messages -->
+            <!-- Mostrar errores o mensajes de exito -->
             {% if messages %}
             <div class="alert alert-primary" role="alert">
                 {% for message in messages %}
@@ -22,38 +23,38 @@
             </div>
             {% endif %}
 
-            <!-- First Name input field -->
+            <!-- Ingreso promer nombre -->
             <div class="form-group">
-                <label for="exampleInputEmail1">First name</label>
+                <label for="exampleInputEmail1">Nombres</label>
                 <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
                     placeholder="Enter First name" name="first_name" required>
             </div>
 
-            <!-- Last Name input field -->
+            <!-- Ingreso apellidos -->
             <div class="form-group">
-                <label for="exampleInputEmail1">Last name</label>
+                <label for="exampleInputEmail1">Apellidos</label>
                 <input type="text" name="last_name" class="form-control" id="exampleInputEmail1"
                     aria-describedby="emailHelp" placeholder="Enter Last name" required>
             </div>
 
-            <!-- Username input field -->
+            <!-- Ingresar nombre de usuario -->
             <div class="form-group">
-                <label for="exampleInputEmail1">Username</label>
+                <label for="exampleInputEmail1">Usuario</label>
                 <input type="text" class="form-control" name="username" id="exampleInputEmail1"
                     aria-describedby="emailHelp" placeholder="Enter email" required>
             </div>
 
-            <!-- Password input field -->
+            <!-- Ingreso contraseña -->
             <div class="form-group">
-                <label for="exampleInputPassword1">Password</label>
+                <label for="exampleInputPassword1">Contraseña</label>
                 <input type="password" class="form-control" name="password" id="exampleInputPassword1"
                     placeholder="Password" required>
             </div>
 
-            <!-- Link to login page for users who already have an account -->
-            <p>Already have an account <a href="/login/">Login</a> </p>
+            <!-- Link a la pagina de login para usuarios que ya tengan una cuenta. -->
+            <p>Ya tengo una cuenta <a href="/login/">Login</a> </p>
 
-            <!-- Submit button -->
+            <!-- Boton submit -->
             <button type="submit" class="btn btn-primary">Submit</button>
         </form>
     </div>

@@ -5,18 +5,18 @@
 {% block content %}
    
     <div class="container mt-5">
-        <!-- Login form -->
+        <!-- Formulario Login -->
         <form class="col-6 mx-auto card p-3 shadow-lg" method="post" enctype="multipart/form-data">
-            <h1 class="text-primary" style="text-align: center;"><span >asdf</span></h1>
+            <h1 class="text-primary" style="text-align: center;"><span >Master Language</span></h1>
 
-              <!-- CSRF token for security -->
+              <!-- CSRF token para seguridad -->
             {% csrf_token %}
 
-            <!-- Login heading -->
+            <!-- Cabecera login -->
             <h3>Login</h3>
             <hr>
 
-            <!-- Display error/success messages -->
+            <!-- Muestra errores o mensajes de exito -->
             {% if messages %}
             <div class="alert alert-primary" role="alert">
                 {% for message in messages %}
@@ -25,21 +25,21 @@
             </div>
             {% endif %}
 
-            <!-- Username input field -->
+            <!-- Ingreso de usuario-->
             <div class="form-group">
-                <label for="exampleInputEmail1">Username</label>
+                <label for="exampleInputEmail1">Usuario</label>
                 <input type="text" class="form-control" name="username" id="exampleInputEmail1" aria-describedby="emailHelp"
                     placeholder="Enter username" required>
             </div>
 
-            <!-- Password input field -->
+            <!-- Ingreso de contraseña -->
             <div class="form-group">
-                <label for="exampleInputPassword1">Password</label>
+                <label for="exampleInputPassword1">Contraseña</label>
                 <input type="password" name="password" class="form-control" id="exampleInputPassword1" placeholder="Password" required>
             </div>
 
-            <!-- Link to registration page -->
-            <p>Don't have an account <a href="/register/">Register</a> </p>
+            <!-- Link a pagina de registro -->
+            <p>No tienes una cuenta <a href="/register/">Registrate</a> </p>
 
             <!-- Submit button -->
             <button type="submit" class="btn btn-primary">Submit</button>
