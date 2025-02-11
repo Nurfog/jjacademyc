@@ -39,19 +39,19 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'autenticacion',
+    #'autenticacion',
     'cms',
     'web',
     'lms',
     'jjacademyc',
     'diagnostico',
+    'auth',
     'bootstrap5',
     'django_bootstrap_icons',
     'allauth',
     'allauth.account',
     'allauth.socialaccount.providers.google',
-    'rest_framework_serializer_extensions',
-    'rest_framework',
+
 ]
 
 MIDDLEWARE = [
@@ -194,3 +194,5 @@ REST_FRAMEWORK = {
         'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly',
     ],
 }
+# Custom user model
+AUTH_USER_MODEL = 'authentication.CustomUser'
