@@ -45,12 +45,14 @@ INSTALLED_APPS = [
     'lms',
     'jjacademyc',
     'diagnostico',
-    'auth',
+    'oauth',
     'bootstrap5',
     'django_bootstrap_icons',
     'allauth',
     'allauth.account',
+    'allauth.socialaccount',
     'allauth.socialaccount.providers.google',
+    #'django.contrib.sites',
 
 ]
 
@@ -62,6 +64,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    # Add the account middleware:
     "allauth.account.middleware.AccountMiddleware",
 ]
 
@@ -73,9 +76,10 @@ TEMPLATES = [
         'DIRS': [BASE_DIR / 'web' / 'templates',
                  BASE_DIR / 'lms' / 'templates',
                  BASE_DIR / 'diagnostico' / 'templates',
-                 BASE_DIR / 'autenticacion' / 'templates',
+                 #BASE_DIR / 'autenticacion' / 'templates',
                  BASE_DIR / 'jjacademyc' / 'templates',
-                 BASE_DIR / 'cms' / 'templates',],
+                 BASE_DIR / 'cms' / 'templates',
+                 BASE_DIR / 'oauth' / 'templates',],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -180,6 +184,13 @@ SOCIALACCOUNT_PROVIDERS = {
         # For each OAuth based provider, either add a ``SocialApp``
         # (``socialaccount`` app) containing the required client
         # credentials, or list them here:
+        'SCOPE': [
+            'profile',
+            'email',
+        ],
+        'AUTH_PARAMS': {
+            'access_type': 'online',
+        },
         'APP': {
             'client_id': '189593328-ufg3g933jhqi98bo6439d28tokucpu24.apps.googleusercontent.com',
             'secret': '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',
@@ -187,12 +198,17 @@ SOCIALACCOUNT_PROVIDERS = {
         }
     }
 }
-REST_FRAMEWORK = {
+
+#REST_FRAMEWORK = {
     # Use Django's standard `django.contrib.auth` permissions,
     # or allow read-only access for unauthenticated users.
-    'DEFAULT_PERMISSION_CLASSES': [
-        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly',
-    ],
-}
-# Custom user model
-AUTH_USER_MODEL = 'authentication.CustomUser'
+#    'DEFAULT_PERMISSION_CLASSES': [
+#        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly',
+#    ],
+#}
+
+# Additional configuration settings
+SOCIALACCOUNT_QUERY_EMAIL = True
+ACCOUNT_LOGOUT_ON_GET= True
+ACCOUNT_UNIQUE_EMAIL = True
+ACCOUNT_EMAIL_REQUIRED = True
