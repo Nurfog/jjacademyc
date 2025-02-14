@@ -1,20 +1,49 @@
-{% load socialaccount %}
-<html>
+{% extends 'base.html' %}
 
-<head>
-    <title>Google Registration</title>
-</head>
+{% block title %}Login{% endblock %}
 
-<body>
-    <h1>My Google Login Project</h1>
-    {% if user.is_authenticated %}
-    <p>Welcome, {{ user.username }} !</p>
+{% block content %}
+   
+    <div class="container mt-5">
+        <!-- Formulario Login -->
+        <form class="col-6 mx-auto card p-3 shadow-lg" method="post" enctype="multipart/form-data">
+            <h1 class="text-primary" style="text-align: center;"><span >Master Language</span></h1>
 
-    {% else %}
-    <h1>My Google Login Project</h1>
-    <a href="{% provider_login_url 'google' %}">Login with Google</a>
-    {% endif %}
+              <!-- CSRF token para seguridad -->
+            {% csrf_token %}
 
-</body>
+            <!-- Cabecera login -->
+            <h3>Login</h3>
+            <hr>
 
-</html>
+            <!-- Muestra errores o mensajes de exito -->
+            {% if messages %}
+            <div class="alert alert-primary" role="alert">
+                {% for message in messages %}
+                {{ message }}
+                {% endfor %}
+            </div>
+            {% endif %}
+
+            <!-- Ingreso de usuario-->
+            <div class="form-group">
+                <label for="exampleInputEmail1">Usuario</label>
+                <input type="text" class="form-control" name="username" id="exampleInputEmail1" aria-describedby="emailHelp"
+                    placeholder="Enter username" required>
+            </div>
+
+            <!-- Ingreso de contraseña -->
+            <div class="form-group">
+                <label for="exampleInputPassword1">Contraseña</label>
+                <input type="password" name="password" class="form-control" id="exampleInputPassword1" placeholder="Password" required>
+            </div>
+
+            <!-- Link a pagina de registro -->
+            <p>No tienes una cuenta <a href="/register/">Registrate</a> </p>
+
+            <!-- Submit button -->
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+
+{% endblock %}

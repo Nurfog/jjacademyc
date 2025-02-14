@@ -1,7 +1,8 @@
 from django.contrib import admin
 from django.urls import path,include
 from . import views
-from oauth.views import login
+import oauth.views
+
 
 
 urlpatterns = [
@@ -13,7 +14,7 @@ urlpatterns = [
     path('team/', views.team, name='team'),
     path('testimonial/', views.testimonial, name='testimonial'),
     path('error_404/', views.error_404, name='error_404'),
-    path('account/', login, name='account'),
+    path('account/', oauth.views.login, name='account'),
     #path('login/',views.login_page,name='login'),
     #path('register/',views.register_page,name='register'),
     

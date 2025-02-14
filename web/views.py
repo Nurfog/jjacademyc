@@ -3,7 +3,7 @@ from django.contrib.auth.decorators import login_required
 from .models import *
 from django.http import JsonResponse
 from django.middleware.csrf import get_token
-from oauth.views import login
+import oauth.views 
 
 
 def index(request):
